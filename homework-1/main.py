@@ -1,4 +1,3 @@
-#import srс.item
 from item import Item
 
 if __name__ == '__main__':
