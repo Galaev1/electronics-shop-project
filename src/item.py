@@ -2,7 +2,6 @@ import csv
 
 
 
-
 class Item:
     pay_rate = 1.0
     all = []
@@ -15,17 +14,21 @@ class Item:
         Item.all.append(self)
 
     def __repr__(self):
-        return f'{self.name},{self.price},{self.quantity}'
+        return f"{self.__class__.__name__}('{self.name}', {self.price},{self.quantity})"
 
     def __str__(self):
         return self.name
+
+    @property
+    def name(self):
+        return self.__name
 
     @name.setter
     def name(self, name: str) -> None:
         self.__name = name
         if len(self.__name) > 10:
             raise ValueError('Не больше 10 символов')
-        return self.name
+        return self.__name
 
     @classmethod
     def instantiate_from_csv(slf) -> None:
