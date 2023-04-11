@@ -1,7 +1,5 @@
 import csv
 
-
-
 class Item:
     pay_rate = 1.0
     all = []
@@ -33,14 +31,14 @@ class Item:
     @classmethod
     def instantiate_from_csv(slf) -> None:
         slf.all = []
-        with open('items.csv', encoding='windows-1251') as file:
+        with open('../src/items.csv', encoding='windows-1251') as file:
             reader = csv.DictReader(file)
             for row in reader:
                 slf(row['name'], float(row['price']), int(row['quantity']))
                 return slf.all
-
-    def string_to_number(self,number) -> int:
-        return int(number.split(',')[0])
+    @staticmethod
+    def string_to_number(number) -> int:
+        return int(number.split('.')[0])
 
     def calculate_total_price(self) -> float:
         """
