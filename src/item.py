@@ -29,13 +29,14 @@ class Item:
         return self.__name
 
     @classmethod
-    def instantiate_from_csv(slf) -> None:
-        slf.all = []
+    def instantiate_from_csv(cls) -> None:
+        cls.all = []
         with open('../src/items.csv', encoding='windows-1251') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                slf(row['name'], float(row['price']), int(row['quantity']))
-                return slf.all
+                cls(row['name'], float(row['price']), int(row['quantity']))
+            return cls.all
+
     @staticmethod
     def string_to_number(number) -> int:
         return int(number.split('.')[0])

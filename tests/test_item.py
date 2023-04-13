@@ -27,5 +27,5 @@ def test_name(item1):
     assert item1.name == "Телефон"
 
 
-def test_instantiate_from_csv():
-    pass
+def test_instantiate_from_csv(item1):
+    return item1.instantiate_from_csv()
