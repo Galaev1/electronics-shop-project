@@ -1,5 +1,7 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
 import pytest
+
+from phone import Phone
 from src.item import Item
 
 
@@ -29,3 +31,9 @@ def test_name(item1):
 
 def test_instantiate_from_csv(item1):
     return item1.instantiate_from_csv()
+
+def test_add_isinstance():
+    phone1 = Phone("iPhone 14", 120_000, 5, 2)
+    item1 = Item("Смартфон", 10000, 20)
+    assert item1 + phone1 == 25
+    assert phone1 + phone1 == 10
