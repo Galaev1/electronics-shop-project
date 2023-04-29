@@ -33,9 +33,17 @@ class Item:
         cls.all = []
         with open('../src/items.csv', encoding='windows-1251') as file:
             reader = csv.DictReader(file)
-            for row in reader:
-                cls(row['name'], float(row['price']), int(row['quantity']))
-            return cls.all
+            if file is None:
+                raise FileNotFoundError('Отсутствует файл item.csv')
+            else:
+                for row in reader:
+                    if len(row) < 3:
+                        raise InstantiateCSVError('Файл item.csv поврежден')
+                    else:
+                        cls.all.append(row)
+        return cls.all.pop(1)
+
+
 
     @staticmethod
     def string_to_number(number) -> int:
